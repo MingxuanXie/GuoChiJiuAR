@@ -6,7 +6,7 @@
     <script src="js/aframe.min.js"></script>
     <script src="js/aframe-extras.min.js"></script>
     <!-- <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script> -->
-
+    <style>h1 {text-align: center; color: blue;}</style>
     <!-- Create Video Feed Background using https://glitch.com/edit/#!/stack-57493298?path=index.html%3A15%3A0 -->
     <style>   
       #webcam {
@@ -16,6 +16,7 @@
           top: 0; left: 0; 
           min-width: 100%; min-height: 100%;
           width: auto; height: auto;
+          z-index: -1;
       }
     </style>
         <script>
@@ -61,6 +62,7 @@
 
   </head>
   <body>
+    <h1>测试页面</h1>
     <video id="webcam" autoplay playsinline></video>
     <a-scene renderer="antialias: true; colorManagement: true;" 
              loading-screen="dotsColor: #e2e2dc; backgroundColor: #e2e2e2" vr-mode-ui="enabled: false"> 
