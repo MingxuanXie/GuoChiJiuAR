@@ -39,7 +39,7 @@
               })
               .catch(function(error) {
                   // console.error("Oops. Something is broken.", error);
-                  alert("当前浏览器不支持AR，请转用原生浏览器（如Safari）打开页面");
+                  alert("当前浏览器不支持AR\n请转用原生浏览器（如Safari）打开页面");
               });
           }
   
@@ -71,7 +71,7 @@
         <a-asset-item id="model" src="assets/yu_ji/scene.gltf"></a-asset-item>
       </a-assets>
       
-      <a-entity camera look-controls position="0 1.4 0"></a-entity>
+      <a-entity camera position="0 1.4 0"></a-entity>
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
       <a-entity light="color: #eee; intensity: 1" position="0 1 2"></a-entity>
       <a-entity light="type: ambient; color: #eee; intensity: 1"></a-entity>

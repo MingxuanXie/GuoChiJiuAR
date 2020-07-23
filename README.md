@@ -3,7 +3,9 @@ Dev repo for GuoChiJiu WebAR
 
 公网ip：39.101.194.195
 网址：https://xinguyuan.cn/
-项羽测试：./xy.html
+
+XY测试: https://mingxuan.fun/guo-chi-jiu/xy.html  
+YJ测试：https://mingxuan.fun/guo-chi-jiu/yj.html
 
 
 nginx网站目录`/usr/share/nginx/html`
