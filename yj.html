@@ -38,9 +38,12 @@
                   cameraView.srcObject = stream;
               })
               .catch(function(error) {
-                  // console.error("Oops. Something is broken.", error);
-                  alert("当前浏览器不支持AR\n请转用原生浏览器（如Safari）打开页面");
+                  console.error("Oops. Something is broken.", error);
+                  // alert("当前浏览器不支持AR\n请转用原生浏览器（如Safari）打开页面");
               });
+              if( navigator.mediaDevices.getUserMedia === undefined ){
+                alert("当前浏览器不支持AR\n请转用原生浏览器（如Safari）打开页面");
+              }
           }
   
           // Start the video stream when the window loads
