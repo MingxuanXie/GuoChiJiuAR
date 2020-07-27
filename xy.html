@@ -17,8 +17,20 @@
           top: 0; left: 0; 
           min-width: 100%; min-height: 100%;
           width: auto; height: auto;
-          z-index: -1;
+          z-index: -1000;
       }
+      .intro-overlay {
+            z-index: 1;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 700px;
+            box-sizing: border-box;
+            padding: 1.5em;
+            color: #FFF;
+            background: rgba(0, 0, 0, 0.75);
+            font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
+          }
     </style>
     <script>
       var cameraView;
@@ -68,25 +80,54 @@
           });
       </script>
 
+      <!-- <script>
+        function playAudio(url) {
+          new Audio(url).play();
+        }
+      </script> -->
 
   </head>
   <body>
-    <h1>测试页面</h1>
+    <audio id="voice">
+      <source src="assets/xiang_yu/xy1.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <div id="dialog" class="intro-overlay">
+      <h1>测试页面</h1>
+      <button onclick="playAudio()" type="button">开始</button>
+    </div>
+
     <video id="webcam" autoplay playsinline></video>
+
+    <script>
+      var x = document.getElementById("voice"); 
+      
+      function playAudio() { 
+        x.play(); 
+      } 
+    </script>
+  
     <a-scene renderer="antialias: true; colorManagement: true;" 
              loading-screen="dotsColor: #e2e2dc; backgroundColor: #e2e2e2" 
              vr-mode-ui="enabled: false"
              > 
       <a-assets>
         <a-asset-item id="model" src="assets/xiang_yu/scene.gltf"></a-asset-item>
+        <!-- <audio id="voice" src="assets/xiang_yu/xy1.mp3" preload="auto"></audio> -->
       </a-assets>
       
-      <a-entity camera position="0 1.5 0"></a-entity>
+      <a-entity camera position="0 1.25 0"></a-entity>
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
       <a-entity light="color: #eee; intensity: 1" position="0 1 2"></a-entity>
       <a-entity light="type: ambient; color: #eee; intensity: 1"></a-entity>
 
-      <a-entity gltf-model="#model" scale="15 15 15" position="0 0 -2.5" rotation="0 0 0" animation-mixer></a-entity>
+      <a-entity gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" animation-mixer></a-entity>
+      <!-- <a-entity sound="src: #voice; on: click; autoplay: true"></a-entity> -->
+      <!-- <a-sound src="src: url(assets/yu_ji/yj1.mp3)" autoplay="true"></a-sound> -->
+
     </a-scene>
+
+    
   </body>
 </html>

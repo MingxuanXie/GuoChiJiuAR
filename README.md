@@ -24,14 +24,20 @@ nginx初始内容：
 ├── nginx-logo.png
 └── poweredby.png -> nginx-logo.png
 ```
-删除目录下所有文件`rm -fr *` 
+
+更新服务器内容`git pull origin master`
+
+仓库地址 https://gitee.com/MingxuanXie/guo-chi-jiu
+
+<!-- 删除目录下所有文件`rm -fr *` 
 
 列出目录下所有隐藏文件`ls -a`
 
 删除目录下所有隐藏文件`rm -rf * .*`
 
-然后 git clone到当前文件夹`git clone https://github.com/MingxuanXie/guo-chi-jiu.git .`
+然后 git clone到当前文件夹`git clone https://github.com/MingxuanXie/guo-chi-jiu.git .` -->
 
-网站地址
 
-更多参考：https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7?spm=a2c6h.12873639.0.0.692d25b8bTITXH
+更多参考：https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7?spm=a2c6h.12873639.0.0.692d25b8bTITXH  
+
+Mix HTML elements with A-frame: https://aframe.city/
