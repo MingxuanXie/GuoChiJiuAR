@@ -32,6 +32,8 @@
             font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
           }
     </style>
+
+    <!-- Scripts -->
     <script>
       var cameraView;
       var ua = window.navigator.userAgent.toLowerCase(); // for Wechat detection
@@ -78,14 +80,8 @@
               });
             }
           });
-      </script>
 
-      <!-- <script>
-        function playAudio(url) {
-          new Audio(url).play();
-        }
-      </script> -->
-
+  </script>
   </head>
   <body>
     <audio id="voice">
@@ -95,39 +91,36 @@
 
     <div id="dialog" class="intro-overlay">
       <h1>测试页面</h1>
-      <button onclick="playAudio()" type="button">开始</button>
+      <button onclick="activateScene()" type="button">开始</button>
     </div>
 
     <video id="webcam" autoplay playsinline></video>
+  
+    <div id="myScene" hidden>
+      <a-scene renderer="antialias: true; colorManagement: true;" 
+              loading-screen="dotsColor: #e2e2dc; backgroundColor: #e2e2e2" 
+              vr-mode-ui="enabled: false"
+              > 
+        <a-assets>
+          <a-asset-item id="model" src="assets/xiang_yu/scene.gltf"></a-asset-item>
+        </a-assets>
+        
+        <a-entity camera position="0 1.25 0"></a-entity>
+        <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+        <a-entity light="color: #eee; intensity: 1" position="0 1 2"></a-entity>
+        <a-entity light="type: ambient; color: #eee; intensity: 1"></a-entity>
 
+        <a-entity gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" animation-mixer="clip: Take 001; clampWhenFinished: true; loop: once"></a-entity>
+      </a-scene>
+    </div>
     <script>
       var x = document.getElementById("voice"); 
-      
-      function playAudio() { 
-        x.play(); 
+      var y = document.getElementById("myScene");
+      function activateScene() { 
+        // x.play(); 
+        y.style.display = "block";
       } 
     </script>
-  
-    <a-scene renderer="antialias: true; colorManagement: true;" 
-             loading-screen="dotsColor: #e2e2dc; backgroundColor: #e2e2e2" 
-             vr-mode-ui="enabled: false"
-             > 
-      <a-assets>
-        <a-asset-item id="model" src="assets/xiang_yu/scene.gltf"></a-asset-item>
-        <!-- <audio id="voice" src="assets/xiang_yu/xy1.mp3" preload="auto"></audio> -->
-      </a-assets>
-      
-      <a-entity camera position="0 1.25 0"></a-entity>
-      <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
-      <a-entity light="color: #eee; intensity: 1" position="0 1 2"></a-entity>
-      <a-entity light="type: ambient; color: #eee; intensity: 1"></a-entity>
-
-      <a-entity gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" animation-mixer></a-entity>
-      <!-- <a-entity sound="src: #voice; on: click; autoplay: true"></a-entity> -->
-      <!-- <a-sound src="src: url(assets/yu_ji/yj1.mp3)" autoplay="true"></a-sound> -->
-
-    </a-scene>
-
     
   </body>
 </html>
