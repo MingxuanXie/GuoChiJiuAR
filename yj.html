@@ -4,7 +4,7 @@
   <head>
     <title></title>
     <script src="js/aframe.min.js"></script>
-    <script src="js/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
     <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
     <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
@@ -107,7 +107,7 @@
           <!-- <a-image src="#st" position="-1.2 0 0" event-set__click="scale: 4 4 4"  event-set__1="_event: mouseleave; scale: 1 1 1"></a-image> -->
           <a-image src="#1" position="-1.2 0 0" animation__click1="property: position; startEvents: click; to: 0 1.5 0.5; dur: 200"></a-image>
           <a-image src="#2" position="0 0 0" event-set__click2="_event: click; _target: #opponent; material.transparent: false"></a-image>
-          <a-image src="#3" position="1.2 0 0" event-set__click3="_event: click; _target: #npc; animation-mixer.timeScale: 1"></a-image>
+          <a-image src="#3" position="1.2 0 0" event-set__click3="_event: click; _target: #npc; animation-mixer.timeScale: 1; "></a-image>
         </a-entity>
         
         <a-entity position="0 0 -0.4" scale="0.1 0.1 0.1">
@@ -143,7 +143,7 @@ event-set__leave="_event: mouseleave; color: #4CC3D9"></a-box>
       <a-entity light="color: #eee; intensity: 1" position="0 1 2"></a-entity>
       <a-entity light="type: ambient; color: #eee; intensity: 1"></a-entity>
 
-      <a-entity id="npc" gltf-model="#model" scale="0.2 0.2 0.2" position="0 0 -2" rotation="0 0 0" animation-mixer="clip: yuji-jinchang; timeScale: 1; loop: once" sound="src: #voice; autoplay: true"></a-entity>
+      <a-entity id="npc" gltf-model="#model" scale="0.2 0.2 0.2" position="0 0 -2" rotation="0 0 0" animation-mixer="clip: yuji-jinchang; timeScale: 0; loop: once" sound="src: #voice; autoplay: true"></a-entity>
       <!-- <a-entity gltf-model="#model" scale="0.2 0.2 0.2" position="0 0 -2" rotation="0 0 0" animation-mixer="clip: yuji-xunhuan; loop: repeat"></a-entity> -->
 
     </a-scene>

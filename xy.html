@@ -100,7 +100,7 @@
         <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
         <a-entity light="color: #eee; intensity: 1" position="0 1 2"></a-entity>
         <a-entity light="type: ambient; color: #eee; intensity: 1"></a-entity>
-        <a-entity gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" animation-mixer="clip: xy-jinchang; loop: once" sound="src: #voice; autoplay: true"></a-entity>
+        <a-entity id="npc" gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" animation-mixer="clip: xy-jinchang; timeScale:0; loop: once"></a-entity>
         <!-- <a-entity gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" visible="true" animation-mixer="clip: xy-xunhuan; loop: repeat"></a-entity> -->
 <!-- game -->
         <a-entity position="0 0.5 -0.5" scale="0.1 0.1 0.1">
@@ -113,9 +113,11 @@
       <script>
         var x = document.getElementById("voice"); 
         var y = document.getElementById("myScene");
+        var z = document.getElementById("npc");
         function activateScene() { 
           x.play(); 
           y.style.display = "block";
+          z.setAttribute('animation-mixer', {timeScale: 1});
         } 
       </script>
 
