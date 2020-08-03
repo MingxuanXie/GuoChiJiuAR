@@ -5,6 +5,8 @@
     <title>国池酒AR互动</title>
     <script src="js/aframe.min.js"></script>
     <script src="js/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
     <!-- <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script> -->
     <style>h1 {text-align: center; color: blue;}</style>
     <!-- Create Video Feed Background using https://glitch.com/edit/#!/stack-57493298?path=index.html%3A15%3A0 -->
@@ -21,17 +23,18 @@
       .intro-overlay {
             z-index: 1;
             position: absolute;
-            top: 20px;
-            left: 20px;
-            max-width: 700px;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            /* max-width: 700px; */
             box-sizing: border-box;
             padding: 1.5em;
             color: #FFF;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.0);
             font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
           }
     </style>
-    <!-- Scripts -->
+
     <script>
       var cameraView;
       var ua = window.navigator.userAgent.toLowerCase(); // for Wechat detection
@@ -60,18 +63,6 @@
       }
       // Start the video stream when the window loads
       window.addEventListener("load", cameraStart, false);
-      // Component to change to a sequential color on cursor suspension.
-      AFRAME.registerComponent('cursor-listener', {
-        init: function () {
-          var lastIndex = -1;
-          var COLORS = ['red', 'green', 'blue'];
-          this.el.addEventListener('click', function (evt) {
-            lastIndex = (lastIndex + 1) % COLORS.length;
-            this.setAttribute('material', 'color', COLORS[lastIndex]);
-            console.log('I was clicked at: ', evt.detail.intersection.point);
-          });
-        }
-      });
 
   </script>
   </head>
@@ -83,42 +74,54 @@
       <h1>测试页面</h1>
       <button onclick="activateScene()" type="button">开始</button>
     </div>
+    <div id="game" class="intro-overlay" hidden>
+      <button onclick="activateGame()" type="button">划拳</button>
+    </div>
     <video id="webcam" autoplay playsinline></video>
     <div id="myScene" hidden>
       <a-scene renderer="antialias: true; colorManagement: true;" 
                loading-screen="dotsColor: #e2e2dc; backgroundColor: #e2e2e2" 
                vr-mode-ui="enabled: false"
+               device-orientation-permission-ui="enabled: false"
               > 
         <a-assets>
           <a-asset-item id="model" src="assets/xiang_yu/scene.gltf"></a-asset-item>
+          <a-asset-item id="huaquan-model" src="assets/huaquan/huaquan.gltf"></a-asset-item>
+          <audio id="voice" src="assets/yu_ji/yj1.mp3" preload="auto"></audio>
           <img id="st" src="assets/img/st.png">
           <img id="jd" src="assets/img/jd.png">
           <img id="bu" src="assets/img/bu.png">
-          <audio id="voice" src="assets/yu_ji/yj1.mp3" preload="auto"></audio>
+          <img id="huaquan" src="assets/img/huaquan.gif">
         </a-assets>
         <a-entity camera position="0 1.25 0"></a-entity>
         <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
         <a-entity light="color: #eee; intensity: 1" position="0 1 2"></a-entity>
         <a-entity light="type: ambient; color: #eee; intensity: 1"></a-entity>
         <a-entity id="npc" gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" animation-mixer="clip: xy-jinchang; timeScale:0; loop: once"></a-entity>
+        <!-- <a-entity id="opponent" gltf-model="#huaquan-model" position="0 1.1 -0.4" scale="0.05 0.05 0.05" rotation="90 0 0" animation-mixer="timeScale: 10"></a-entity> -->
+        <a-entity id="opponent" position="0 1.1 -0.4" scale="0.1 0.1 0.1" geometry="primitive:plane;" material="shader:gif; src: #huaquan" gif=""></a-entity>
         <!-- <a-entity gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" visible="true" animation-mixer="clip: xy-xunhuan; loop: repeat"></a-entity> -->
-<!-- game -->
-        <a-entity position="0 0.5 -0.5" scale="0.1 0.1 0.1">
-          <a-image src="#st" position="-1 0 0"></a-image>
-          <a-image src="#jd" position="0 0 0"></a-image>
-          <a-image src="#bu" position="1 0 0"></a-image>
-        </a-entity>
       </a-scene>
       </div>
+
       <script>
         var x = document.getElementById("voice"); 
         var y = document.getElementById("myScene");
         var z = document.getElementById("npc");
+        var a = document.getElementById("dialog");
+        var b = document.getElementById("opponent");
+        var c = document.getElementById("game");
         function activateScene() { 
           x.play(); 
           y.style.display = "block";
           z.setAttribute('animation-mixer', {timeScale: 1});
-        } 
+          a.style.display = "none";
+          c.style.display = "block";
+        }
+        function activateGame() { 
+          // b.setAttribute('animation-mixer', {timeScale: 0});
+          b.components.gif.togglePlayback();
+        }
       </script>
 
   </body>
