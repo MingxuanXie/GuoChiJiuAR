@@ -41,3 +41,5 @@ nginx初始内容：
 更多参考：https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7?spm=a2c6h.12873639.0.0.692d25b8bTITXH  
 
 Mix HTML elements with A-frame: https://aframe.city/
+
+GLTF to GLB Packer: https://glb-packer.glitch.me/   https://sbtron.github.io/makeglb/
