@@ -78,53 +78,53 @@
     </div>
     <video id="webcam" autoplay playsinline></video>
     <div id="myScene" hidden>
-      <a-scene renderer="antialias: true; colorManagement: true;" 
-               loading-screen="dotsColor: #e2e2dc; backgroundColor: #e2e2e2" 
-               vr-mode-ui="enabled: false"
-               device-orientation-permission-ui="enabled: false"
-              > 
-        <a-assets>
-          <a-asset-item id="model" src="assets/xiang_yu/scene.glb" preload="auto"></a-asset-item>
-          <a-asset-item id="huaquan-model" src="assets/huaquan/huaquan.gltf" preload="auto"></a-asset-item>
-          <img id="st" src="assets/img/st.png" preload="auto">
-          <img id="jd" src="assets/img/jd.png" preload="auto">
-          <img id="bu" src="assets/img/bu.png" preload="auto">
-          <img id="huaquan" src="assets/img/huaquan.gif" preload="auto">
-        </a-assets>
-        <a-entity camera position="0 1 0"></a-entity>
-        <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
-        <a-entity light="color: #eee; intensity: 1" position="0 1 2"></a-entity>
-        <a-entity light="type: ambient; color: #eee; intensity: 1"></a-entity>
-        <a-entity id="npc" gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" animation-mixer="clip: xy-jinchang; timeScale:0; loop: once"></a-entity>
-        <!-- <a-entity id="opponent" gltf-model="#huaquan-model" position="0 1.1 -0.4" scale="0.05 0.05 0.05" rotation="90 0 0" animation-mixer="timeScale: 10"></a-entity> -->
-        <a-entity id="opponent" position="0 0.8 -0.4" scale="0.04 0.04 0.04" geometry="primitive:circle;" visible="false" material="shader:gif; src: #huaquan" gif=""></a-entity>
-        <!-- <a-entity gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" visible="true" animation-mixer="clip: xy-xunhuan; loop: repeat"></a-entity> -->
-      </a-scene>
-      </div>
 
-      <script>
-        var x = document.getElementById("voice"); 
-        var y = document.getElementById("myScene");
-        var z = document.getElementById("npc");
-        var a = document.getElementById("dialog");
-        var b = document.getElementById("opponent");
-        var c = document.getElementById("game");
-        function activateScene() { 
-          x.play(); 
-          y.style.display = "block";
-          z.setAttribute('animation-mixer', {timeScale: 1});
-          a.style.display = "none";
+    </div>
+    <a-scene renderer="antialias: true; colorManagement: true;" 
+    loading-screen="dotsColor: #e2e2dc; backgroundColor: #e2e2e2" 
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false"
+   > 
+<a-assets>
+<a-asset-item id="model" src="assets/xiang_yu/scene.glb" preload="auto"></a-asset-item>
+<a-asset-item id="huaquan-model" src="assets/huaquan/huaquan.gltf" preload="auto"></a-asset-item>
+<img id="st" src="assets/img/st.png" preload="auto">
+<img id="jd" src="assets/img/jd.png" preload="auto">
+<img id="bu" src="assets/img/bu.png" preload="auto">
+<img id="huaquan" src="assets/img/huaquan.gif" preload="auto">
+</a-assets>
+<a-entity camera position="0 1 0"></a-entity>
+<a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+<a-entity light="color: #eee; intensity: 1" position="0 1 2"></a-entity>
+<a-entity light="type: ambient; color: #eee; intensity: 1"></a-entity>
+<a-entity id="npc" gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" animation-mixer="clip: xy-jinchang; timeScale:0; loop: once"></a-entity>
+<!-- <a-entity id="opponent" gltf-model="#huaquan-model" position="0 1.1 -0.4" scale="0.05 0.05 0.05" rotation="90 0 0" animation-mixer="timeScale: 10"></a-entity> -->
+<a-entity id="opponent" position="0 0.8 -0.4" scale="0.04 0.04 0.04" geometry="primitive:circle;" visible="false" material="shader:gif; src: #huaquan" gif=""></a-entity>
+<!-- <a-entity gltf-model="#model" scale="20 20 20" position="0 0 -2.5" rotation="0 10 0" visible="true" animation-mixer="clip: xy-xunhuan; loop: repeat"></a-entity> -->
+</a-scene>
+    <script>
+      var x = document.getElementById("voice"); 
+      var y = document.getElementById("myScene");
+      var z = document.getElementById("npc");
+      var a = document.getElementById("dialog");
+      var b = document.getElementById("opponent");
+      var c = document.getElementById("game");
+      function activateScene() { 
+        x.play(); 
+        y.style.display = "block";
+        z.setAttribute('animation-mixer', {timeScale: 1});
+        a.style.display = "none";
 
-          setTimeout(function(){
-            b.object3D.visible = true;
-            c.style.display = "block";
-          }, 25000);
-        }
-        function activateGame() { 
-            // b.setAttribute('animation-mixer', {timeScale: 0});
-            b.components.gif.togglePlayback();
-        }
-      </script>
+        setTimeout(function(){
+          b.object3D.visible = true;
+          c.style.display = "block";
+        }, 25000);
+      }
+      function activateGame() { 
+          // b.setAttribute('animation-mixer', {timeScale: 0});
+          b.components.gif.togglePlayback();
+      }
+    </script>
 
   </body>
 </html>
