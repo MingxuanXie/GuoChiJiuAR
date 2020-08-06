@@ -11,7 +11,9 @@ function activateStartButton() {
 }
 function activateScene() {        
     x.play(); 
-    z.setAttribute('animation-mixer', {timeScale: 1});
+    setTimeout(function(){
+      z.setAttribute('animation-mixer', {timeScale: 1});
+    }, 300);
     a.style.display = "none";
     setTimeout(function(){
       b.object3D.visible = true;
