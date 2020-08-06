@@ -32,7 +32,7 @@ function activateScene(foo) {
           e = true;
         }
       }, 2400);
-    }, 30000);
+    }, 29000);
 }
 function activateGame() { 
   b.components.gif.togglePlayback();
