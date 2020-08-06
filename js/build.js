@@ -4,6 +4,7 @@ var a = document.getElementById("startbutton");
 var b = document.getElementById("opponent");
 var c = document.getElementById("game");
 var d = document.getElementById("replay");
+var e = false;
 document.getElementById("a-loader").addEventListener("loaded", activateStartButton);
 function activateStartButton() {
   a.style.display = "block";
@@ -17,8 +18,19 @@ function activateScene() {
       c.style.display = "block";
     }, 26000);
     setTimeout(function(){
-      z.setAttribute('animation-mixer', {clip: 'xy-xunhuan', loop: 'repeat'});
+      // z.setAttribute('animation-mixer', {clip: 'xy-xunhuan', loop: 'repeat'});
       // BUG: xy-xunhuan animation has 30s gap
+      z.setAttribute('animation-mixer', {timeScale: -1, loop: 'repeat'});
+      e = true;
+      setInterval(function(){
+        if (e){
+          z.setAttribute('animation-mixer', {timeScale: 1});
+          e = false;
+        } else {
+          z.setAttribute('animation-mixer', {timeScale: -1});
+          e = true;
+        }
+      }, 3000);
     }, 30000);
 }
 function activateGame() { 
