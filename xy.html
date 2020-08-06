@@ -2,57 +2,16 @@
 <html>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <head>
-  <title>国池酒AR互动</title>
-  <script src="js/aframe.min.js"></script>
-  <script src="js/aframe-extras.min.js"></script>
-  <script src="js/aframe-gif-shader.min.js"></script>
-  <script src="js/aframe-gif-component.min.js"></script>
-  <script src="js/camera.js"></script>
-  <style>h1 {text-align: center; color: blue;}</style>
-  <style>   
-    #webcam {
-        opacity:1;
-        position: fixed;
-        background-size: 100% 100%;
-        top: 0; left: 0; 
-        min-width: 100%; min-height: 100%;
-        width: auto; height: auto;
-        z-index: -1000;
-    }
-    .intro-overlay {
-      z-index: 1;
-      margin: 0;
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-    .button {
-      border: none;
-      color: white;
-      opacity: 0.9;
-      background-color:crimson;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-align: center;
-      display: inline-block;
-      font-size: 16px;
-      font-family: PingFangSC-Regular, sans-serif;
-      font-weight: bold;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-    .a-loader-title {
-        z-index: 1;
-        position: absolute;
-        font-family: PingFangSC-Regular, sans-serif;
-    }
-  </style>
+    <title>国池酒AR互动</title>
+    <script src="js/aframe.min.js"></script>
+    <script src="js/aframe-extras.min.js"></script>
+    <script src="js/aframe-gif-shader.min.js"></script>
+    <script src="js/aframe-gif-component.min.js"></script>
+    <script src="js/camera.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/build.css">
   </head>
   <body>
-    <audio id="voice">
+    <audio id="voice" preload="auto">
       <source src="assets/xiang_yu/xy1.mp3" type="audio/mpeg">
     </audio>
     <div id="startbutton" class="intro-overlay" hidden>
@@ -84,7 +43,7 @@
       <a-entity light="type: ambient; color: #eee; intensity: 1"></a-entity>
       <a-entity id="npc" gltf-model="#model" scale="20 20 20" position="0 -0.25 -2.5" rotation="0 10 0" animation-mixer="clip: xy-jinchang; timeScale:0; loop: once"></a-entity>
       <!-- <a-entity id="opponent" gltf-model="#huaquan-model" position="0 1.1 -0.4" scale="0.05 0.05 0.05" rotation="90 0 0" animation-mixer="timeScale: 10"></a-entity> -->
-      <a-entity id="opponent" position="0.1 1.275 -0.4" scale="0.04 0.04 0.04" geometry="primitive:circle;" visible="false" material="shader:gif; src: #huaquan; color: #eedddd" gif=""></a-entity>
+      <a-entity id="opponent" position="0.125 1.275 -0.4" scale="0.04 0.04 0.04" geometry="primitive:circle;" visible="false" material="shader:gif; src: #huaquan; color: #eedddd" gif=""></a-entity>
     </a-scene>
     <script src="js/build.js"></script>
   </body>
