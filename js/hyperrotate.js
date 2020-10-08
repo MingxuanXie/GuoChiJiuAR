@@ -1,11 +1,9 @@
+// Written by Mingxuan Xie (http://mingxuan.fun/)
 AFRAME.registerComponent('hyperrotate', {
-    // schema: {type: 'boolean', default: true},
     tick: function (time, timeDelta) {
-        // if (this.data){
             this.el.object3D.rotation.x += Math.random();
             this.el.object3D.rotation.y += Math.random();
             this.el.object3D.rotation.z += Math.random();
-        // }
     },
     pause: function (){
         var foo = Math.floor(Math.random() * 6);
