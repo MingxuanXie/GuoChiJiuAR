@@ -1,5 +1,6 @@
 var a = document.getElementById("startbutton");
 var b = document.getElementById("npc")
+var c = document.getElementById("replaybutton");
 var n1 = document.getElementById("g1");
 var n3 = document.getElementById("g3");
 var n4 = document.getElementById("g4");
@@ -10,6 +11,9 @@ var n8 = document.getElementById("g8");
 document.getElementById("a-loader").addEventListener("loaded", activateStartButton);
 function activateStartButton() {
   a.style.display = "block";
+  setTimeout(function() {
+    c.style.display = "block";
+  }, 40000);
 }
 function activateScene(foo) {   
     b.components.sound.playSound();     
@@ -21,4 +25,5 @@ function activateScene(foo) {
     n7.setAttribute('animation-mixer', {timeScale: 1});
     n8.setAttribute('animation-mixer', {timeScale: 1});
     a.style.display = "none";
+    c.style.display = "none";
 }
